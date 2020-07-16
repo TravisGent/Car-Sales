@@ -30,7 +30,10 @@ export const initialState = {
         return {
           ...state,
           
-          features: state.car.features.push(newObj),
+          car: {
+            ...state.car,
+            features: [...state.car.features, newObj]
+          },
 
           additionalFeatures: state.additionalFeatures.filter(item => (
             item.id !== action.payload
@@ -39,8 +42,28 @@ export const initialState = {
         }
 
       case "REMOVE_FEATURE":
+        let newObjTwo = state.car.features.find(item => (
+          item.id === action.payload
+        ))
+
+        let newVarTwo = 0;
+        for(let i = 0; i < (state.additionalFeatures.length); i++) {
+          newVarTwo -= (state.additionalFeatures[i].price);
+        }
+
         return {
-          ...state
+          ...state,
+          additionalFeatures: [
+            ...state.additionalFeatures, 
+            newObjTwo
+          ],
+
+          car: {
+            ...state.car,
+            features: state.car.features.filter(item => (
+              item.id !== action.payload
+            ))
+          }
         }
         
       default:
