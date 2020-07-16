@@ -5,21 +5,23 @@ const AddedFeature = props => {
   return (
     <li>
       {/* Add an onClick to run a function to remove a feature */}
-      <button className="button">X</button>
+      <button onClick={() => props.addFeature(props.feature.id)} className="button">X</button>
       {props.feature.name}
     </li>
   );
 };
 
+export const removeFeature = newFeature => {
+  return { type: "REMOVE_FEATURE", payload: newFeature };
+}
+
 const mapStateToProps = state => { 
   return { 
-    name: state.name
+    name: state.car.features.name
   };
 }
 
 export default connect(
-  state => { 
-    return { mapStateToProps };
-  }, 
-  {}
+  mapStateToProps, 
+  { }
 )(AddedFeature);

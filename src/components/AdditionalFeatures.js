@@ -26,8 +26,6 @@ const mapStateToProps = state => {
 }
 
 export default connect(
-  state => { 
-    return { mapStateToProps };
-  }, 
-  {}
+  mapStateToProps,
+  { }
 )(AdditionalFeatures);

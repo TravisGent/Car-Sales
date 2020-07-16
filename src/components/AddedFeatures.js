@@ -21,13 +21,11 @@ const AddedFeatures = props => {
 
 const mapStateToProps = state => { 
   return { 
-    features: state.features
+    features: state.car.features
   };
 }
 
 export default connect(
-  state => { 
-    return { mapStateToProps };
-  }, 
-  {}
+  mapStateToProps,
+  {  }
 )(AddedFeatures);

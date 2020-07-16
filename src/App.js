@@ -22,6 +22,7 @@ const App = props => {
 };
 
 const mapStateToProps = state => { 
+  console.log(state);
   return { 
     additionalFeatures: state.additionalFeatures, 
     additionalPrice: state.additionalPrice, 
@@ -31,5 +32,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps, 
-  {  }
+  { }
 )(App);
